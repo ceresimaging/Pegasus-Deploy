@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pegasus — Install</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0f1f0f;
+    --bg-card: #162416;
+    --bg-card-hover: #1c2e1c;
+    --green-dark: #1b5e20;
+    --green-mid: #2e7d32;
+    --green-bright: #4caf50;
+    --green-lime: #8bc34a;
+    --yellow: #cddc39;
+    --orange: #ff9800;
+    --orange-bright: #f57c00;
+    --orange-deep: #e65100;
+    --text-primary: #e8f5e9;
+    --text-secondary: #81c784;
+    --text-muted: #4a7a4a;
+    --border: #2a4a2a;
+    --glow-green: rgba(76, 175, 80, 0.15);
+    --glow-orange: rgba(255, 152, 0, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(76, 175, 80, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(76, 175, 80, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Top ambient glow */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(76, 175, 80, 0.08) 0%, rgba(255, 152, 0, 0.04) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    text-align: center;
+    padding: 3rem 0 2.5rem;
+  }
+
+  .hero-logo {
+    width: 420px;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 12px;
+  }
+
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-version {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--green-bright);
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-version .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-bright);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-org {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Install Button ── */
+  .install-section {
+    text-align: center;
+    padding: 1rem 0 2.5rem;
+  }
+
+  .install-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--green-mid) 0%, var(--green-dark) 100%);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 1.1rem 3rem;
+    border-radius: 14px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    box-shadow:
+      0 0 30px rgba(76, 175, 80, 0.15),
+      0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .install-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .install-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 50px rgba(76, 175, 80, 0.25),
+      0 8px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(76, 175, 80, 0.5);
+  }
+
+  .install-btn:hover::before { opacity: 1; }
+
+  .install-btn:active {
+    transform: translateY(0);
+  }
+
+  .install-btn svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .install-note {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* ── Steps ── */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .step:hover {
+    background: var(--bg-card-hover);
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .step:first-child .step-number {
+    background: rgba(76, 175, 80, 0.15);
+    color: var(--green-bright);
+  }
+
+  .step:last-child .step-number {
+    background: rgba(255, 152, 0, 0.15);
+    color: var(--orange);
+  }
+
+  .step h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .step p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .step code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--green-lime);
+    background: rgba(139, 195, 74, 0.1);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+  }
+
+  .step .trust-path {
+    margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    line-height: 2;
+    color: var(--text-secondary);
+  }
+
+  .trust-path span {
+    color: var(--orange);
+  }
+
+  /* ── Release Notes ── */
+  .releases {
+    margin-bottom: 3rem;
+  }
+
+  .releases-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+
+  .releases-header h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .releases-header .archive-label {
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .release {
+    border-left: 2px solid var(--border);
+    margin-left: 0.5rem;
+    padding-left: 1.25rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+  }
+
+  .release::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 1.1rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .release.latest {
+    border-left-color: var(--green-bright);
+  }
+
+  .release.latest::before {
+    background: var(--green-bright);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  }
+
+  .release-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    text-align: left;
+    transition: background 0.2s;
+  }
+
+  .release-toggle:hover {
+    background: var(--bg-card-hover);
+  }
+
+  .release-toggle .left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .release-toggle .version-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    color: var(--green-bright);
+  }
+
+  .release.latest .release-toggle .version-num {
+    color: var(--green-lime);
+  }
+
+  .release-toggle .badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    background: rgba(76, 175, 80, 0.15);
+    color: var(--green-bright);
+  }
+
+  .release-toggle .chevron {
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .release-toggle[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .release-content {
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .release-content.open {
+    display: block;
+    animation: fadeSlide 0.2s ease;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .release-content ol {
+    padding-left: 1.25rem;
+  }
+
+  .release-content li {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.25rem;
+  }
+
+  .release-content li::marker {
+    color: var(--text-muted);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page { padding: 1.5rem 1rem 3rem; }
+    .hero-logo { width: 180px; }
+    .steps { grid-template-columns: 1fr; }
+    .install-btn { width: 100%; justify-content: center; padding: 1.1rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Hero -->
+  <section class="hero">
+    <video class="hero-logo" autoplay loop muted playsinline>
+      <source src="assets/logo-animation.webm" type="video/webm">
+      <img src="assets/logo.webp" alt="Pegasus">
+    </video>
+    <p class="hero-org">v2.1.0.0 &middot; by Ceres Imaging</p>
+  </section>
+
+  <!-- Install -->
+  <section class="install-section">
+    <a class="install-btn"
+       href="itms-services://?action=download-manifest&url=https://ceresimaging.github.io/Pegasus-Deploy/manifest.plist">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Tap to Install Pegasus
+    </a>
+    <p class="install-note">Open this page in Safari on your iOS device.</p>
+  </section>
+
+  <!-- Steps -->
+  <section class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Open in Safari</h3>
+      <p>This install link only works in <code>Safari</code>. Other browsers will block the enterprise download.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>Trust Developer</h3>
+      <p>After installing, authorize the app:</p>
+      <div class="trust-path">
+        Settings &rsaquo; General &rsaquo;<br>
+        VPN &amp; Device Management &rsaquo;<br>
+        <span>Ceres Imaging, Inc.</span> &rsaquo; <span>Trust</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Release Notes -->
+  <section class="releases">
+    <div class="releases-header">
+      <h2>Release Notes</h2>
+      <span class="archive-label">Changelog</span>
+    </div>
+
+    <!-- 2.1.0.0 -->
+    <div class="release latest">
+      <button class="release-toggle" aria-expanded="true" onclick="toggleRelease(this)">
+        <span class="left">
+          <span class="version-num">2.1.0.0</span>
+          <span class="badge">Latest</span>
+        </span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content open">
+        <ol>
+          <li>BLE name refresh &mdash; replaces stale cached peripheral names with current advertised names throughout the BLE system.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.9 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.9</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Lots of work to allow two BLE devices to connect at once.</li>
+          <li>Added BLE connection screen.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.8 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.8</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Changed flights API URL to use a new one that does not cache the flight data.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.7 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.7</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Now rounding up each field's altitude to the next 100 feet higher (ie 4324ft becomes 4400ft).</li>
+          <li>Ceres works team changed the way we access data on AWS. Pegasus can now access historical flight path data on AWS again (was broken).</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.6 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.6</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Hopefully fixed the flight simulator interface.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.5 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.5</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Hopefully fixed the code that talks to Fornax. Previously it was broken.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.4 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.4</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Merged BLE INS branch with the main branch.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.3 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.3</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Added code to receive GPS data over BLE from the adafruit BLE board.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.2 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.2</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Backend API points to https://works-qa1.ceresimaging.net/api/</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.1 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.1</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>When you connect to a camera's BLE, we show the GPS signal strength by coloring the camera icon: green, yellow, orange, red.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 2.0.0.0 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">2.0.0.0</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Now in the flight planning view, fields can be manually reordered by tapping on them.</li>
+          <li>Flight plans are now saved when accepting a flight plan.</li>
+          <li>In manual flight planning mode we now are showing each field's altitude on its map pin.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.9 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.9</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Simplified and improved the flow for how we scan the camera and start the flight.</li>
+          <li>Fixed the logic for the previous/next pass buttons.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.8 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.8</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>API points to https://works.ceresimaging.net/api/.</li>
+          <li>Fixed zooming bug when pressing + or - buttons on the map.</li>
+          <li>Added setting to enable / disable auto-zooming when selecting a new field.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.7 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.7</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Test build with API pointing to https://works-qa1.ceresimaging.net/api/.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.6 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.6</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Swapped wind direction and speed sliders on the flight planning screen.</li>
+          <li>Added code infrastructure to auto enable BLE camera scanning (not enabled yet).</li>
+          <li>Fixed flight sim connection over UDP.</li>
+          <li>I think I fixed the velocity calculation for the Inertialsense GPS.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.5 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.5</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Fixed crash that was occurring when going to the flight report view.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.4 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.4</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Fixed bug that was causing Bad Elf GPS to conflict with Inertialsense GPS.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.3 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.3</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Reenabled Bad Elf GPS reception which was accidentally disabled.</li>
+          <li>Regenerated certificates because Pegasus randomly stopped working.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.2 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.2</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Fixed weighted averaging algorithm to handle headings correctly.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9.1 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9.1</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Now weighted averaging the heading from the Inertialsense Redpark external GPS. We take the last 5 headings and average them together with the newest weighted twice as much as the oldest.</li>
+          <li>Major code cleanup centered around GPS receiving.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.9 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.9</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>We are now receiving and decoding messages from the Inertialsense uINS via the Redpark RS232 cable.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.8 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.8</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Now decoding ADS-B / GDL90 messages over wifi. Traffic messages are decoded and aircraft tracks are displayed on the map.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.7 -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.7</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>When scanning QR code, video preview display now rotates when iPad is rotated.</li>
+          <li>Restored previous and next pass buttons to allow user to change which pass is active manually.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1.9.6 and older collapsed into a "show more" -->
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.6</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Do not start scan for BLE devices unless initiated by user.</li>
+          <li>Fixed pins on flight selection map to properly display each field's altitude. Pin color is determined by field altitude.</li>
+          <li>Fixed Silo API call to get flight path data for Helios flights (previously only worked for Sylvanus).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.5</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>We now can disable scanning for BLE devices by pressing the "scan" button in the Settings menu.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.4</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>For fields with pass spacing less than or equal to 550ft, reduce the pass spacing by a factor of 10%.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.3</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Switched from using works-staging to regular works.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.2</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>This is a test release which uses works-staging for submitting flight reports. We changed the way time and distance estimates were calculated in the flight report.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.1</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Changed the way that we export KMLs in order to support flight planning / navigation in ForeFlight.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.9.0</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Pointed works API from staging to production.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.9</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Automatically deleting the old credentials file when Pegasus starts.</li>
+          <li>Added +/- buttons to the Altitude changing view.</li>
+          <li>Altitude now slides +/- 2000ft from the starting value in the slider bar (was +/- 4000ft).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.8</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Fixed security flaw with how we store usernames and passwords.</li>
+          <li>Now submitting the iPad device name in the flight report for improved asset tracking.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.7</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Added animation that switches the position of the table and the map when selecting Historical vs Current flight selection modes.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.6</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Fixed a bug that was causing 200km long passes to get created on a field whenever you would install Pegasus without setting the Pilot Skill.</li>
+          <li>Now when we are in historical mode, show an error label if no flight data could be downloaded from Silo / AWS.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.5</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Added the ability to download historical flight paths on the Flight Selection View and export it to Google Earth.</li>
+          <li>Made it so altitude editing mode gets hidden if any button is pressed in the Field Detail View.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.4</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>When a pilot changes the skill setting and saves it, we regenerate all pass proposals for fields that are not marked as completed.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.3</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Now displaying pins over each field in the Flight Select View with the Altitude displayed above each.</li>
+          <li>Fixed Flight refresh functionality to copy over the settings from the flight planning view.</li>
+          <li>Now rounding the user specified altitude and pass spacing so that it's an integer.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.2</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Added change altitude feature in field detail view: recalculates pass spacing.</li>
+          <li>Added button which will update the current flight plan in the settings menu.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.1</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>QR code camera checkout is now pointing at production Ceres Works API (1.8.0 was on staging).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.8.0</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Added QR code scanner when flight plan is selected.</li>
+          <li>Created flight planning view with remaining flight time, next field selection, transit leg times, field service times, and adjustable wind and performance settings.</li>
+          <li>Reverted back to showing Bearing to Start.</li>
+          <li>Pilot Statistics displayed when "Submit Flight Report" button pressed.</li>
+          <li>When field is completed, next field is automatically selected, with passes drawn.</li>
+          <li>New Version of Pegasus can be installed from "Advanced Settings".</li>
+          <li>Tach and Hobbs start is now requested to be entered when flight is confirmed.</li>
+          <li>Pegasus can now connect to either Flight Sim or Bad Elf without changing settings.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.7.0 &ndash; 1.7.5</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Automatic pass advancement when reaching field turnaround boundary.</li>
+          <li>Bold green arrow direction indicator on turnarounds.</li>
+          <li>Blue curved line showing suggested flight route to pilot.</li>
+          <li>New flight report fields: distance estimates, pass statistics, turn times, velocity, weather, turbulence.</li>
+          <li>Pass deviation changed to 75 feet for Mosaic fields.</li>
+          <li>Turnaround distance options: Beginner (.6 mi), Intermediate (.3 mi), Expert (.1 mi).</li>
+          <li>Ground speed display, KML export improvements, UI optimizations.</li>
+          <li>Fixed crashes on flight report view for iOS versions prior to 13.x.</li>
+          <li>Performance fixes for line redrawing in iOS 13.x.</li>
+          <li>Updated startup screen and login modal with new Ceres logos.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="release">
+      <button class="release-toggle" aria-expanded="false" onclick="toggleRelease(this)">
+        <span class="left"><span class="version-num">1.5.0 &ndash; 1.6.0</span></span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="release-content">
+        <ol>
+          <li>Individual Flying Service logins required.</li>
+          <li>Version checking to prevent old versions from working.</li>
+          <li>Extensive UI adjustments for smaller screens and iPhones.</li>
+          <li>Show/hide map pins setting.</li>
+          <li>Quick map mode toggle from pass deviation indicator.</li>
+          <li>BLE camera communication infrastructure (initially disabled).</li>
+          <li>Pass deviation settable between 50 and 100 feet.</li>
+          <li>Fixed security flaw with credential storage.</li>
+        </ol>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Ceres Imaging &middot; 2026</p>
+  </footer>
+
+</div>
+
+<script>
+function toggleRelease(btn) {
+  const content = btn.nextElementSibling;
+  const isOpen = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !isOpen);
+  content.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
