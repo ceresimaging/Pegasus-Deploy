@@ -23,7 +23,7 @@ Open the install page on your iOS device in **Safari**:
 
 After installing, trust the developer certificate:
 1. Go to **Settings > General > VPN & Device Management**
-2. Tap **Ceres Imaging, Inc.**
+2. Tap **Ceres AI, Inc.**
 3. Tap **Trust**
 
 ## Updating the App
