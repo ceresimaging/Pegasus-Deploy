@@ -1,0 +1,7 @@
+{
+  "version": "2.0.0.8",
+  "date": "2022-10-01",
+  "notes": [
+    "Changed flights API URL to use one that does not cache flight data"
+  ]
+}

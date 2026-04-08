@@ -1,0 +1,7 @@
+{
+  "version": "2.0.4.4",
+  "date": "2024-10-21",
+  "notes": [
+    "Fixed AWS credentials being overwritten by checked-in JSON file with bogus values"
+  ]
+}

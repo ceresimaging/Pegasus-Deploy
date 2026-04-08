@@ -1,0 +1,9 @@
+{
+  "version": "1.9.6",
+  "date": "2019-04-01",
+  "notes": [
+    "Do not start scan for BLE devices unless initiated by user",
+    "Fixed flight selection map pins to show field altitude with color",
+    "Fixed Silo API call for Helios flights"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0.9",
+  "date": "2022-12-06",
+  "notes": [
+    "Two BLE devices can connect at once",
+    "Added BLE connection screen"
+  ]
+}

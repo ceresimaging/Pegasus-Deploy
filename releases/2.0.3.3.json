@@ -1,0 +1,8 @@
+{
+  "version": "2.0.3.3",
+  "date": "2024-08-12",
+  "notes": [
+    "Two crash fixes in BLE delegate methods",
+    "Additional error checking and diagnostics"
+  ]
+}

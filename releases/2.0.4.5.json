@@ -1,0 +1,8 @@
+{
+  "version": "2.0.4.5",
+  "date": "2024-10-28",
+  "notes": [
+    "BLE byte string debug printout for diagnostics",
+    "Version bump"
+  ]
+}

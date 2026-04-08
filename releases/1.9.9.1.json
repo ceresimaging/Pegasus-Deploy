@@ -1,0 +1,8 @@
+{
+  "version": "1.9.9.1",
+  "date": "2019-12-01",
+  "notes": [
+    "Weighted averaging of heading from Inertialsense Redpark external GPS (last 5 headings, newest weighted twice as much)",
+    "Major code cleanup centered around GPS receiving"
+  ]
+}

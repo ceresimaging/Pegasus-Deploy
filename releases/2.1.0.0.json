@@ -1,0 +1,11 @@
+{
+  "version": "2.1.0.0",
+  "date": "2025-07-01",
+  "notes": [
+    "Lag diagnostics and auto-reporting system",
+    "BLE connection flow fixes and peripheral table display improvements",
+    "UDP-based remote debug logging (SmartPrint over WiFi)",
+    "Email credential fix",
+    "Certificate updates"
+  ]
+}

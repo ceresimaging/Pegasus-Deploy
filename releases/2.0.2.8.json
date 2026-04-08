@@ -1,0 +1,7 @@
+{
+  "version": "2.0.2.8",
+  "date": "2024-07-23",
+  "notes": [
+    "CPU performance monitoring (on-screen CPU display, show/hide toggle in settings)"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "version": "1.9.9.4",
+  "date": "2020-06-01",
+  "notes": [
+    "Fixed bug causing Bad Elf GPS to conflict with Inertialsense GPS"
+  ]
+}

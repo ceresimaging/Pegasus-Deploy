@@ -1,0 +1,9 @@
+{
+  "version": "1.8.9",
+  "date": "2018-02-01",
+  "notes": [
+    "Auto-deleting old credentials file on startup",
+    "Added +/- buttons to altitude changing view",
+    "Altitude slider range changed to +/- 2000ft"
+  ]
+}

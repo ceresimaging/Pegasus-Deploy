@@ -1,0 +1,9 @@
+{
+  "version": "2.0.4.2",
+  "date": "2024-09-17",
+  "notes": [
+    "Map caching moved to right-hand settings menu",
+    "Aircraft speed interpretation fix",
+    "Auto-fitting button text that was truncated on iPad"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "version": "1.9.2",
+  "date": "2018-08-01",
+  "notes": [
+    "Test release using works-staging for flight reports",
+    "Changed time and distance estimate calculations"
+  ]
+}

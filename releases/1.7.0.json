@@ -1,0 +1,12 @@
+{
+  "version": "1.7.0",
+  "date": "2016-04-01",
+  "notes": [
+    "Automatic pass advancement at field turnaround boundary",
+    "Green arrow direction indicator on turnarounds",
+    "New flight report fields: distances, passes, turn times, velocity, weather, turbulence",
+    "Pass deviation changed to 75 feet for Mosaic fields",
+    "Turnaround distance options: Beginner/Intermediate/Expert",
+    "Ground speed display, KML export improvements, UI optimizations"
+  ]
+}

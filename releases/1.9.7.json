@@ -1,0 +1,8 @@
+{
+  "version": "1.9.7",
+  "date": "2019-06-01",
+  "notes": [
+    "QR code video preview rotates when iPad is rotated",
+    "Restored previous and next pass buttons"
+  ]
+}

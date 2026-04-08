@@ -1,0 +1,9 @@
+{
+  "version": "2.0.4.0",
+  "date": "2024-08-19",
+  "notes": [
+    "Replaced fatalError() calls with user-facing error alerts",
+    "Multiple crash fixes based on crash reports (null checks, error handling)",
+    "New global error alert utility"
+  ]
+}

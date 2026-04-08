@@ -1,0 +1,9 @@
+{
+  "version": "1.8.3",
+  "date": "2017-02-01",
+  "notes": [
+    "Altitude pins displayed over each field in Flight Select View",
+    "Fixed flight refresh to copy settings from flight planning view",
+    "Rounding altitude and pass spacing to integers"
+  ]
+}

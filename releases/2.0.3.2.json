@@ -1,0 +1,11 @@
+{
+  "version": "2.0.3.2",
+  "date": "2024-08-06",
+  "notes": [
+    "WiFi RSSI scanning service (initially disabled pending Apple permission)",
+    "Major memory leak fixes (especially MapView deallocation)",
+    "View controller lifecycle logging to CSV",
+    "iPhone UI fixes (missing back buttons, text truncation)",
+    "Email sending on pilot issue submission"
+  ]
+}

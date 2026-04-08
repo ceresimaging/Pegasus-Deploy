@@ -1,0 +1,7 @@
+{
+  "version": "1.9.4",
+  "date": "2018-12-01",
+  "notes": [
+    "For fields with pass spacing <= 550ft, reduce pass spacing by 10%"
+  ]
+}

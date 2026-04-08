@@ -1,0 +1,11 @@
+{
+  "version": "2.0.4.3",
+  "date": "2024-10-01",
+  "notes": [
+    "Large merge of flight planning optimization work",
+    "Field geometry simplification (polygon vertex reduction with ~5x reduction, ~5-10% CPU improvement)",
+    "Field major axis pass creation rewrite to match Python reference implementation",
+    "TSP solver fix to always track best solution",
+    "Pass creation logic reorganized"
+  ]
+}

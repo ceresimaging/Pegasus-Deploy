@@ -1,0 +1,9 @@
+{
+  "version": "2.0.0.0",
+  "date": "2021-06-01",
+  "notes": [
+    "Fields can be manually reordered by tapping in flight planning view",
+    "Flight plans are now saved when accepting a flight plan",
+    "Showing each field's altitude on its map pin in manual flight planning mode"
+  ]
+}

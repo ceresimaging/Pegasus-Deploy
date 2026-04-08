@@ -1,0 +1,8 @@
+{
+  "version": "1.8.6",
+  "date": "2017-08-01",
+  "notes": [
+    "Fixed bug causing 200km long passes when Pilot Skill not set",
+    "Error label shown in historical mode when no flight data downloaded"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "version": "2.0.0.3",
+  "date": "2021-12-01",
+  "notes": [
+    "Added code to receive GPS data over BLE from the adafruit BLE board"
+  ]
+}

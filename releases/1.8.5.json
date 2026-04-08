@@ -1,0 +1,8 @@
+{
+  "version": "1.8.5",
+  "date": "2017-06-01",
+  "notes": [
+    "Download historical flight paths and export to Google Earth",
+    "Altitude editing mode hidden when buttons pressed in Field Detail View"
+  ]
+}

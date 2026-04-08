@@ -1,0 +1,7 @@
+{
+  "version": "1.9.9",
+  "date": "2019-10-01",
+  "notes": [
+    "Receiving and decoding messages from the Inertialsense uINS via the Redpark RS232 cable"
+  ]
+}

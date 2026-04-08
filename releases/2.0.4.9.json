@@ -1,0 +1,8 @@
+{
+  "version": "2.0.4.9",
+  "date": "2025-06-17",
+  "notes": [
+    "Python analysis scripts for diagnosing lag causes from Pegasus log files",
+    "Tooling and analysis improvements only, no app code changes"
+  ]
+}

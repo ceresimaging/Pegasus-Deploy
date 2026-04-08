@@ -1,0 +1,7 @@
+{
+  "version": "1.9.9.2",
+  "date": "2020-02-01",
+  "notes": [
+    "Fixed weighted averaging algorithm to handle headings correctly"
+  ]
+}

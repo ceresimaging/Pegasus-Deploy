@@ -1,0 +1,11 @@
+{
+  "version": "2.0.2.9",
+  "date": "2024-07-20",
+  "notes": [
+    "CSV flight data logger with AWS S3 upload",
+    "Battery logging fix",
+    "GPS coordinate validation fix",
+    "BLE state logging",
+    "Thread safety improvements"
+  ]
+}

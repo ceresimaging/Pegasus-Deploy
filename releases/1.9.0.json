@@ -1,0 +1,7 @@
+{
+  "version": "1.9.0",
+  "date": "2018-04-01",
+  "notes": [
+    "Pointed works API from staging to production"
+  ]
+}

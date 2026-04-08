@@ -1,0 +1,9 @@
+{
+  "version": "1.9.9.8",
+  "date": "2021-02-01",
+  "notes": [
+    "API points to works.ceresimaging.net",
+    "Fixed zooming bug when pressing +/- buttons on the map",
+    "Added setting to enable/disable auto-zooming when selecting a new field"
+  ]
+}

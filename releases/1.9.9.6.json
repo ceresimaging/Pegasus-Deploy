@@ -1,0 +1,10 @@
+{
+  "version": "1.9.9.6",
+  "date": "2020-10-01",
+  "notes": [
+    "Swapped wind direction and speed sliders on flight planning screen",
+    "Added code infrastructure to auto enable BLE camera scanning (not enabled yet)",
+    "Fixed flight sim connection over UDP",
+    "Fixed velocity calculation for the Inertialsense GPS"
+  ]
+}

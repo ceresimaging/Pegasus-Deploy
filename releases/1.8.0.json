@@ -1,0 +1,14 @@
+{
+  "version": "1.8.0",
+  "date": "2016-08-01",
+  "notes": [
+    "QR code scanner for flight plan selection",
+    "Flight planning view with remaining time, next field selection, transit/service times, wind/performance settings",
+    "Bearing to Start display restored",
+    "Pilot Statistics on flight report submission",
+    "Auto-select next field when current field completed",
+    "Install new version from Advanced Settings",
+    "Tach and Hobbs entry on flight confirmation",
+    "Connect to Flight Sim or Bad Elf without changing settings"
+  ]
+}

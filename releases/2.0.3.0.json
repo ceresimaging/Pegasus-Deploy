@@ -1,0 +1,9 @@
+{
+  "version": "2.0.3.0",
+  "date": "2024-07-24",
+  "notes": [
+    "Crash reporter system (crash log collection, zip and upload to S3, email notification)",
+    "On-device debug console (LocalConsole library with SmartPrint)",
+    "Python scripts for crash log symbolication"
+  ]
+}

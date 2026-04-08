@@ -1,0 +1,10 @@
+{
+  "version": "1.6.0",
+  "date": "2016-01-01",
+  "notes": [
+    "Extensive UI adjustments for smaller screens and iPhones",
+    "Show/hide map pins setting",
+    "Quick map mode toggle from pass deviation indicator",
+    "BLE camera communication infrastructure (initially disabled)"
+  ]
+}

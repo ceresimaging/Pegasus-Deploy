@@ -1,0 +1,8 @@
+{
+  "version": "1.8.8",
+  "date": "2017-12-01",
+  "notes": [
+    "Fixed security flaw with username/password storage",
+    "Submitting iPad device name in flight report"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "version": "1.9.9.5",
+  "date": "2020-08-01",
+  "notes": [
+    "Fixed crash when going to the flight report view"
+  ]
+}

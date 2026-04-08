@@ -1,0 +1,8 @@
+{
+  "version": "1.9.8",
+  "date": "2019-08-01",
+  "notes": [
+    "Decoding ADS-B / GDL90 messages over wifi",
+    "Aircraft tracks displayed on the map"
+  ]
+}

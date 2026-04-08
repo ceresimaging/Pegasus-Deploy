@@ -1,0 +1,8 @@
+{
+  "version": "2.0.4.1",
+  "date": "2024-08-29",
+  "notes": [
+    "Startup reminder popup for pilots to submit error reports",
+    "Crash fix for table item press in left view controller"
+  ]
+}

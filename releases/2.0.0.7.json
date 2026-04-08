@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0.7",
+  "date": "2022-08-01",
+  "notes": [
+    "Rounding up each field's altitude to the next 100 feet higher",
+    "Fixed AWS historical flight path access"
+  ]
+}

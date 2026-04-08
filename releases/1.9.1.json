@@ -1,0 +1,7 @@
+{
+  "version": "1.9.1",
+  "date": "2018-06-01",
+  "notes": [
+    "Changed KML export to support flight planning in ForeFlight"
+  ]
+}

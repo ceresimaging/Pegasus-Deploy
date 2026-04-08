@@ -1,0 +1,10 @@
+{
+  "version": "1.5.0",
+  "date": "2015-10-01",
+  "notes": [
+    "Individual Flying Service logins required",
+    "Version checking to prevent old versions from working",
+    "Pass deviation settable between 50 and 100 feet",
+    "Fixed security flaw with credential storage"
+  ]
+}

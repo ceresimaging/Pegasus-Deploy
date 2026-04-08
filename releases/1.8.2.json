@@ -1,0 +1,8 @@
+{
+  "version": "1.8.2",
+  "date": "2016-12-01",
+  "notes": [
+    "Change altitude feature in field detail view with pass spacing recalculation",
+    "Update flight plan button in settings menu"
+  ]
+}

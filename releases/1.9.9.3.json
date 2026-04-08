@@ -1,0 +1,8 @@
+{
+  "version": "1.9.9.3",
+  "date": "2020-04-01",
+  "notes": [
+    "Reenabled Bad Elf GPS reception which was accidentally disabled",
+    "Regenerated certificates because Pegasus randomly stopped working"
+  ]
+}

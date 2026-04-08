@@ -1,0 +1,7 @@
+{
+  "version": "1.8.1",
+  "date": "2016-10-01",
+  "notes": [
+    "QR code camera checkout pointing at production Ceres Works API"
+  ]
+}

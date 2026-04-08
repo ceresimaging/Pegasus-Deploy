@@ -1,0 +1,11 @@
+{
+  "version": "2.0.2.3",
+  "date": "2024-02-14",
+  "notes": [
+    "Pilot error reporting system (SwiftUI-based issue reporting screen)",
+    "Pilot profile selection and API integration",
+    "Flight time estimation including average landing/turn times",
+    "Camera status view in SwiftUI",
+    "Protobuf files updated"
+  ]
+}
