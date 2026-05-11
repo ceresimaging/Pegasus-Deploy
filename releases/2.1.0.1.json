@@ -1,0 +1,8 @@
+{
+  "version": "2.1.0.1",
+  "date": "2026-05-09",
+  "notes": [
+    "Security fix: log and crash upload credentials are no longer embedded in the app",
+    "Log uploads now route through the Works API (no AWS credentials in binary)"
+  ]
+}
