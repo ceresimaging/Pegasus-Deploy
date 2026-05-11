@@ -1,0 +1,10 @@
+{
+  "version": "2.1.0.3",
+  "date": "2026-05-11",
+  "notes": [
+    "Version check now reads from Pegasus-Deploy (no longer depends on ceresimaging/versions)",
+    "CSV log zip now writes to the correct destination explicitly",
+    "Orphaned zip files from failed uploads are retried automatically",
+    "Removed redundant crash-log email (crash logs upload to Works/S3 only)"
+  ]
+}
