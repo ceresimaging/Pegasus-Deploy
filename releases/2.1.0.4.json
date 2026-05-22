@@ -1,0 +1,17 @@
+{
+  "version": "2.1.0.4",
+  "date": "2026-05-22",
+  "notes": [
+    "Fixed pass speed slider controlling transit speed instead of pass speed",
+    "Fixed settings save order so calculations always use current slider values",
+    "Added climb rate slider to Flight Planning Settings",
+    "Fixed crashes when aircraft has zero cruise speed in database",
+    "Fixed crashes in TSP solver when all fields are completed",
+    "Fixed force-unwrap crash on nil centerPoint in flight plan",
+    "Flight time labels now refresh immediately after changing route",
+    "Next Field estimate now includes turn time (matching All Fields estimate)",
+    "Fixed altitude/climb adjustment to use consistent time-based algorithm",
+    "Speed settings now refresh automatically after aircraft/pilot selection completes",
+    "Improved input validation and defaults throughout flight planning"
+  ]
+}
