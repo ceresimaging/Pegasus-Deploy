@@ -1,0 +1,10 @@
+{
+  "version": "2.1.0.5",
+  "date": "2026-06-01",
+  "notes": [
+    "Fixed crash when pressing the LAG button (affected flight 24011)",
+    "Fixed crash when flight plan map loads and airport location is unavailable",
+    "Fixed crash when annotation view renders with no image loaded",
+    "Flights list no longer shows failed or cancelled flights"
+  ]
+}
