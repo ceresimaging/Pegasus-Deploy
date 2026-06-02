@@ -1,0 +1,8 @@
+{
+  "version": "2.1.0.6",
+  "date": "2026-06-02",
+  "notes": [
+    "Fixed flights disappearing from list once a pilot marks a flight as In Progress",
+    "Fixed stale flight route lines appearing on map when switching between flights quickly"
+  ]
+}
