@@ -1,0 +1,8 @@
+{
+  "version": "2.1.0.9",
+  "date": "2026-07-01",
+  "notes": [
+    "High-priority fields now flash and pulse on the flight selection map so they stand out at a glance",
+    "Fixed field priority coloring — high-priority fields (priority 100 or above) now correctly show green"
+  ]
+}
