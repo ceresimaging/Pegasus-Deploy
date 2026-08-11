@@ -1,0 +1,11 @@
+{
+  "version": "2.1.1.0",
+  "date": "2026-08-11",
+  "notes": [
+    "Scanning the camera QR code now confirms with Ceres Works before moving on — if it fails, you'll be told instead of the app silently continuing",
+    "Camera checkouts made without a connection are saved and sent automatically once you're back online",
+    "The Camera Status screen now shows live checkout status, including when a checkout needs Ceres Operations",
+    "Camera unavailable messages now say why — for example whether the camera is out of storage space",
+    "Historical Flights list shows completed flights again"
+  ]
+}
