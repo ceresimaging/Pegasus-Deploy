@@ -2,6 +2,7 @@
   "version": "2.1.1.0",
   "date": "2026-08-12",
   "notes": [
+    "Canceled and failed flights no longer appear in your flight list",
     "Fixed the camera scanner freezing the app the first time it was opened after installing Pegasus",
     "Scanning the camera QR code now waits for Ceres Works to confirm the checkout before moving on. Previously it continued straight away and a failed checkout went unnoticed, which is why some flights had to be corrected by hand afterwards",
     "If a checkout fails you now get a clear message with an error number — give that number to Ceres Flight Ops and they can tell what went wrong",
