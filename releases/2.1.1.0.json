@@ -2,12 +2,14 @@
   "version": "2.1.1.0",
   "date": "2026-08-12",
   "notes": [
-    "Scanning the camera QR code now waits for Ceres Works to confirm the checkout before moving on. Previously it continued straight away and a failed checkout went unnoticed, which is why some flights had to be fixed by hand afterwards",
-    "If a checkout fails you now get a clear message with an error number — report that number to Ceres Flight Ops and they can tell what went wrong",
-    "When a camera is unavailable, Pegasus now says why, for example that its storage is full or that it hasn't reported how much space it has left",
+    "Fixed the camera scanner freezing the app the first time it was opened after installing Pegasus",
+    "Scanning the camera QR code now waits for Ceres Works to confirm the checkout before moving on. Previously it continued straight away and a failed checkout went unnoticed, which is why some flights had to be corrected by hand afterwards",
+    "If a checkout fails you now get a clear message with an error number — give that number to Ceres Flight Ops and they can tell what went wrong",
+    "When a camera is unavailable, Pegasus now says why, for example that its storage is full or that it hasn't reported how much space is left",
     "The camera scanner will not open without a network connection, and tells you to reconnect. Checking out the camera is what tells Ceres Works your flight has begun, so it cannot be done offline",
     "The Camera Status screen shows the live checkout status, including when a checkout needs Ceres Flight Ops",
     "If a QR label is damaged or missing, a code can be typed instead — press and hold the on-screen instructions for two seconds to show the box. Ceres Flight Ops has the code",
-    "Historical Flights now lists your completed flights again"
+    "The reminder to switch to Airplane Mode no longer appears before the camera has been checked out",
+    "The Settings screen now shows exactly which version and build is installed"
   ]
 }
